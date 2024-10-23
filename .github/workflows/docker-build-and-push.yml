@@ -25,3 +25,14 @@ jobs:
       - name: Push Docker image
         run: |
           docker push linafarchado/mlopstp:latest
+      - name: SSH and Deploy on Remote Server
+        uses: appleboy/ssh-action@v0.1.3
+        with:
+          host: 20.86.55.5
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+            docker pull linafarchado/mlopstp:latest
+            docker-compose down
+            docker-compose up -d
