@@ -38,5 +38,5 @@ jobs:
             docker-compose down
             docker-compose up -d
 
-            sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} -o StrictHostKeyChecking=no << 'EOF'
+            sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh ubuntu@20.86.55.5 -o StrictHostKeyChecking=no << 'EOF'
             EOF
