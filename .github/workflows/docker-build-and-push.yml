@@ -35,4 +35,5 @@ jobs:
           sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ubuntu@20.86.55.5 << 'EOF'
             docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
             docker pull linafarchado/mlopstp:latest
+            docker run -d -p 8023:8023 linafarchado/mlopstp:latest
           EOF
